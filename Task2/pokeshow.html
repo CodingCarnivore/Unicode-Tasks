@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Pokemon By Type</title>
+    </head>
+    <body>
+        <h1>Pokemon By Type</h1>
+
+        <form method="post"> 
+            {% csrf_token %} 
+            {{form.as_p}} 
+            <button type="submit">Search</button>
+        </form>
+
+        {% if pokemons %}
+            <h2>Pokemon of {{form.cleaned_data.type_name}} type:</h2>
+            <ul>
+                {%for i in pokemons%}
+                    <li>{{i}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </body>
+</html>
